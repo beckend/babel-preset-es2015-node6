@@ -48,12 +48,20 @@ require('babel-core').transform('code', {
 ### Options
 
 * `loose` - Enable "loose" transformations for any plugins in this preset that allow them (Disabled by default).
+* `modules` - To [disable transformation of the ES6 module syntax](https://babeljs.io/docs/plugins/preset-es2015/#options):
 
 ```
+
 {
-  presets: [
-    ["es2015-node6", { "loose": true }]
-  ]
+    "presets": [
+        [
+            "es2015-node6",
+            {
+                "modules": false,
+                "loose": true
+            }
+        ]
+    ]
 }
 ```
 
