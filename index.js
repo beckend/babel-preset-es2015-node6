@@ -2,9 +2,15 @@
  * Refer to https://github.com/babel/babel/blob/master/packages/babel-preset-es2015/src/index.js
  */
 
+const defaultOpts = {
+  loose:   false,
+  modules: 'commonjs'
+};
+
 const moduleTypes = ['commonjs', 'amd', 'umd', 'systemjs'];
 
-const preset = (context, { loose, modules } = { loose: false, modules: 'commonjs' }) => {
+const preset = (context, opts) => {
+  const { loose, modules } = Object.assign({}, defaultOpts, opts);
   if (typeof loose !== 'boolean') throw new Error("Preset es2015 'loose' option must be a boolean.");
   if (modules !== false && moduleTypes.indexOf(modules) === -1) {
     throw new Error("Preset es2015 'modules' option must be 'false' to indicate no modules\n" +
